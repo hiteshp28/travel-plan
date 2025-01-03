@@ -25,7 +25,6 @@ const Header = () => {
   });
 
   const GetUserProfile = (tokenInfo) => {
-    console.log(tokenInfo);
     axios
       .get(
         `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${tokenInfo?.access_token}`,
@@ -37,7 +36,6 @@ const Header = () => {
         }
       )
       .then((response) => {
-        console.log(response);
         localStorage.setItem("user", JSON.stringify(response.data));
         setOpenDailog(false);
         window.location.reload();
@@ -90,30 +88,31 @@ const Header = () => {
             </Popover>
           </div>
         ) : (
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button>Sign In</Button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>
-                  <img src="/logo.svg" className="w-10 md:w-12" alt="Logo" />
-                </DialogTitle>
-                <DialogDescription>
-                  <h2 className="font-bold text-lg mt-7">
-                    Sign In with Google
-                  </h2>
-                  <p>Sign in to the app with Google authentication.</p>
-                  <Button
-                    className="w-full mt-5 flex items-center gap-2 "
-                    onClick={handleLogin}
-                  >
-                    <FcGoogle className="h-5 w-5" /> Sign In with Google
-                  </Button>
-                </DialogDescription>
-              </DialogHeader>
-            </DialogContent>
-          </Dialog>
+          <Dialog open={openDailog} onOpenChange={setOpenDailog}>
+      <DialogTrigger asChild>
+        <Button onClick={() => setOpenDailog(true)}>Sign In</Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>
+            <img src="/logo.svg" className="w-10 md:w-12" alt="Logo" />
+          </DialogTitle>
+          <DialogDescription>
+            <h2 className="font-bold text-lg mt-7">Sign In with Google</h2>
+            <p>Sign in to the app with Google authentication.</p>
+            <Button
+              className="w-full mt-5 flex items-center gap-2"
+              onClick={handleLogin}
+            >
+              <FcGoogle className="h-5 w-5" /> Sign In with Google
+            </Button>
+          </DialogDescription>
+          <div className="flex justify-end">
+            <Button onClick={() => setOpenDailog(false)}>Close</Button>
+          </div>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
         )}
       </div>
     </div>

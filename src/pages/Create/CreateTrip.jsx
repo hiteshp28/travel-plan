@@ -41,7 +41,6 @@ const CreateTrip = () => {
   };
 
   useEffect(() => {
-    console.log(formData);
   }, [formData]);
 
   const login=useGoogleLogin({
@@ -75,7 +74,6 @@ const CreateTrip = () => {
       .replace("{budget}", formData?.budget);
 
     const result = await chatSession.sendMessage(FINAL_PROMPT);
-    console.log(result?.response?.text());
     setLoading(false);
     SaveAiTrip(result?.response?.text());
   };
@@ -101,7 +99,6 @@ const CreateTrip = () => {
         Accept:`Application/json`
       }
     }).then((resp)=>{
-      console.log(resp);
       localStorage.setItem('user',JSON.stringify(resp.data));
       setOpenDialog(false);
       OnGenerateTrip();

@@ -10,7 +10,6 @@ const MyTripCard = ({ item, index }) => {
       textQuery: item?.userSelection?.location?.label,
     };
     const result = await getPlaceDetails(data).then((response) => {
-      console.log(response.data.places[0].photos[3].name);
       const photoUrl = PHOTO_REF_URL.replace(
         "{NAME}",
         response.data.places[0].photos[3].name

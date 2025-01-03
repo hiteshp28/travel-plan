@@ -2,7 +2,6 @@ import React from "react";
 import HotelCard from "./HotelCard.jsx";
 
 const HotelSection = ({ trip }) => {
-  console.log(trip);
   return (
     <div>
       <h2 className="font-bold text-xl my-5">Hotel Recommendation</h2>
