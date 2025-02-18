@@ -8,6 +8,7 @@ import ViewTrip from './pages/view/[tripId]/viewTrip'
 import { Footer } from './pages/view/components/Footer'
 import MyTrips from './pages/MyTrips/MyTrips'
 import Hero from './components/custom/Hero'
+
 function App() {
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
       <Route path='/my-trips' element={<MyTrips/>}/>
     </Routes>
     <Footer/>
+    
     </>
   )
 }

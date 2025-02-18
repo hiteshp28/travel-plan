@@ -7,13 +7,12 @@ import { GoogleOAuthProvider } from '@react-oauth/google'
 import { Analytics } from "@vercel/analytics/react"
 
 createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-  <Analytics>
+  <StrictMode>
     <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_AUTH_CLIENT_ID}>
       <BrowserRouter>
-          <App/>
+        <App />
+        <Analytics /> {/* Move Analytics inside BrowserRouter or StrictMode */}
       </BrowserRouter>
     </GoogleOAuthProvider>
-    </Analytics>
-  </React.StrictMode>
+  </StrictMode>
 )
